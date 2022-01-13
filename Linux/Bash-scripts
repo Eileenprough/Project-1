@@ -1,0 +1,36 @@
+#!/bin/bash
+
+echo "the name of this computer is $HOSTNAME"
+hostname -I
+uname
+date
+echo "The type of this computer is $MACHTYPE"
+mkdir ~/reasearch
+sudo find /home -type f -perm 777 >> ~/research/sys_info.txt
+if [ ! -d $HOME/research ]
+then
+mkdir $HOME/research
+fi
+
+
+```bash
+# Add custom aliases to /home/sysadmin/.bashrc
+echo "#Custom Aliases" >> /home/sysadmin/.bashrc
+echo "alias reload='source ~/.bashrc && echo Bash config reloaded'" >> /home/sysadmin/.bashrc
+echo "alias lsa='ls -a'" >> /home/sysadmin/.bashrc
+echo "alias docs='cd ~/Documents'" >> /home/sysadmin/.bashrc
+echo "alias dwn='cd ~/Downloads'" >> /home/sysadmin/.bashrc
+echo "alias etc='cd /etc'" >> /home/sysadmin/.bashrc
+echo "alias rc='nano ~/.bashrc'" >> /home/sysadmin/.bashrc
+
+
+/var/log/’filename’ { 
+Rotate 4 
+Daily
+Notifempty
+Compress
+} 
+
+
+Ps aux --sort -%cpu | awk {‘print $1, $2, $3, $4, $11’} | head >> ~/research/top_10_processes.txt
+
